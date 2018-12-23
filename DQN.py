@@ -96,27 +96,6 @@ done = False
 batch_size = 32
 EPISODES = 30
 for e in range(EPISODES):
-    vw = cv2.VideoWriter(str(e) + str(datetime.datetime.now()) + '.avi', fourcc, 4, (160, 210))
-    state = env.reset()
-    state = np.reshape(state, (1, 210, 160, 3)).transpose(0, 3, 1, 2)
-    for time in range(1000000000):
-        print(time)
-        action = agent.act(state)
-        next_state, reward, done, _ = env.step(action)
-        vw.write(next_state)
-        reward = reward if not done else -10
-        next_state = np.reshape(next_state, (1, 210, 160, 3)).transpose(0, 3, 1, 2)
-        agent.remember(state, action, reward, next_state, done)
-        state = next_state
-        if done:
-            vw.release()
-            agent.save(str(e) + str(datetime.datetime.now()) + '.pt')
-            print("episode: {}/{}, score: {}, e: {:.2}".format(e, EPISODES, time, agent.epsilon))
-            break
-        if len(agent.memory) > batch_size:
-            agent.replay(batch_size)
-EPISODES = 30
-for e in range(EPISODES):
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
     vw = cv2.VideoWriter(str(e) + str(datetime.datetime.now()) + '.avi', fourcc, 4, (160, 210))
     state = env.reset()
