@@ -1,7 +1,7 @@
 # Deep Q Learning Ms-Pacman-v0
 ============
 
-Deep Q Learning implementation made in PyTorch. Reinforcement learning in action. I used implementatiion of [KEON](https://github.com/keon/deep-q-learning) for Keras. 
+Deep Q Learning implementation made in PyTorch. Reinforcement learning in action. I used implementatiion of [keon](https://github.com/keon/deep-q-learning) for Keras. 
 
 ---
 
